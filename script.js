@@ -1,54 +1,39 @@
-function predictDisease() {
+function register(){
 
-let symptoms = [];
+var user=document.getElementById("newuser").value;
+var pass=document.getElementById("newpass").value;
 
-document.querySelectorAll("input[type=checkbox]:checked").forEach((item)=>{
-symptoms.push(item.value);
-});
-
-let disease = "No disease detected";
-
-// Fever diseases
-if(symptoms.includes("Fever") && symptoms.includes("Cough")){
-disease = "Flu";
+if(user=="" || pass==""){
+alert("Enter username and password");
+return;
 }
 
-// Cold
-else if(symptoms.includes("Cold") && symptoms.includes("Cough")){
-disease = "Common Cold";
+localStorage.setItem("username",user);
+localStorage.setItem("password",pass);
+
+alert("Account Created");
+
+window.location="dashboard.html";
+
 }
 
-// Food Poisoning
-else if(symptoms.includes("Vomiting") && symptoms.includes("Stomach Pain")){
-disease = "Food Poisoning";
-}
+function login(){
 
-// Migraine
-else if(symptoms.includes("Headache") && symptoms.includes("Blur Vision")){
-disease = "Migraine";
-}
+var user=document.getElementById("username").value;
+var pass=document.getElementById("password").value;
 
-// Heart Problem
-else if(symptoms.includes("Chest Pain") && symptoms.includes("Short Breath")){
-disease = "Heart Disease";
-}
+var savedUser=localStorage.getItem("username");
+var savedPass=localStorage.getItem("password");
 
-// Skin Allergy
-else if(symptoms.includes("Skin Rash") && symptoms.includes("Itching")){
-disease = "Skin Allergy";
-}
+if(user===savedUser && pass===savedPass){
 
-// Diabetes
-else if(symptoms.includes("Weight Loss") && symptoms.includes("Fatigue")){
-disease = "Possible Diabetes";
-}
+window.location="dashboard.html";
 
-// Anxiety
-else if(symptoms.includes("Anxiety") && symptoms.includes("Sleep Problem")){
-disease = "Anxiety Disorder";
 }
+else{
 
-document.getElementById("result").innerHTML =
-"🩺 Possible Disease: " + disease;
+alert("Wrong Username or Password");
+
+}
 
 }
