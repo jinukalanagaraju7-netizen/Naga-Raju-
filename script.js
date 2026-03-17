@@ -1,39 +1,49 @@
-function register(){
+function predictDisease(){
 
-var user=document.getElementById("newuser").value;
-var pass=document.getElementById("newpass").value;
+var selected=[];
+var boxes=document.querySelectorAll("input[name='symptom']:checked");
 
-if(user=="" || pass==""){
-alert("Enter username and password");
+boxes.forEach(function(box){
+selected.push(box.value);
+});
+
+if(selected.length < 2){
+document.getElementById("result").innerHTML="Select at least 2 symptoms";
 return;
 }
 
-localStorage.setItem("username",user);
-localStorage.setItem("password",pass);
+var disease="General Viral Infection";
 
-alert("Account Created");
+if(selected.includes("fever") && selected.includes("cough"))
+disease="Flu";
 
-window.location="dashboard.html";
+else if(selected.includes("fever") && selected.includes("vomiting"))
+disease="Food Poisoning";
 
-}
+else if(selected.includes("headache") && selected.includes("blurvision"))
+disease="Migraine";
 
-function login(){
+else if(selected.includes("fatigue") && selected.includes("weightloss"))
+disease="Diabetes";
 
-var user=document.getElementById("username").value;
-var pass=document.getElementById("password").value;
+else if(selected.includes("shortbreath") && selected.includes("chestpain"))
+disease="Heart Problem";
 
-var savedUser=localStorage.getItem("username");
-var savedPass=localStorage.getItem("password");
+else if(selected.includes("itching") && selected.includes("rash"))
+disease="Skin Allergy";
 
-if(user===savedUser && pass===savedPass){
+else if(selected.includes("cold") && selected.includes("sorethroat"))
+disease="Common Cold";
 
-window.location="dashboard.html";
+else if(selected.includes("dizziness") && selected.includes("fatigue"))
+disease="Low Blood Pressure";
 
-}
-else{
+else if(selected.includes("diarrhea") && selected.includes("stomach"))
+disease="Stomach Infection";
 
-alert("Wrong Username or Password");
+else if(selected.includes("backpain") && selected.includes("legpain"))
+disease="Muscle Pain";
 
-}
+document.getElementById("result").innerHTML="🩺 Possible Disease: <b>"+disease+"</b>";
 
 }
