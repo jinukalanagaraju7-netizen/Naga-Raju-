@@ -1,0 +1,49 @@
+body{
+
+margin:0;
+font-family:Arial;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+
+background:linear-gradient(45deg,#ff0000,#ff7300,#fffb00,#48ff00,#00ffd5,#002bff,#7a00ff);
+background-size:400% 400%;
+animation:colors 10s infinite;
+}
+
+@keyframes colors{
+
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+
+}
+
+.login-box{
+
+background:white;
+padding:40px;
+border-radius:10px;
+text-align:center;
+
+}
+
+input{
+
+padding:10px;
+margin:5px;
+width:200px;
+
+}
+
+button{
+
+padding:10px 20px;
+background:#ff416c;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+
+}
